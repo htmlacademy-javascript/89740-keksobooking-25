@@ -110,4 +110,4 @@ const createAd = (index) => {
 };
 
 const ads = Array.from({ length: 10 }, (currentValue, index) => createAd(index));
-
+console.log(ads);
