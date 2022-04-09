@@ -109,5 +109,6 @@ const createAd = (index) => {
   };
 };
 
-const ads = Array.from({ length: 10 }, (currentValue, index) => createAd(index));
+const ads = Array.from({ length: 10 }, (_, index) => createAd(index));
+// eslint-disable-next-line no-console
 console.log(ads);
