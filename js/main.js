@@ -65,18 +65,15 @@ const getRandomFloat = (min, max, decimalPlaces) => {
   return Number(randomize.toFixed(decimalPlaces));
 };
 
-const getFeatures = (features) => {
-  const length = getRandomInteger(1, features.length);
+const getRandomArray = (array) => {
+
+  const copyArray = array.slice();
   const newArray = [];
 
-  while (newArray.length < length) {
-    const i = getRandomInteger(0, features.length - 1);
-    const y = features[i];
-
-    if (!newArray.includes(y)) {
-      newArray.push(y);
-    }
+  for (let i = 0; i <= getRandomInteger(0, copyArray.length - 1); i++) {
+    newArray[i] = copyArray.splice(getRandomInteger(0, copyArray.length - 1), 1).join();
   }
+
   return newArray;
 };
 
@@ -101,9 +98,9 @@ const createAd = (index) => {
       guests: getRandomInteger(1, 20),
       checkin: TIMES[getRandomInteger(0, TIMES.length - 1)],
       checkout: TIMES[getRandomInteger(0, TIMES.length - 1)],
-      features: getFeatures(FEATURES),
+      features: getRandomArray(FEATURES),
       description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)],
-      photos: PHOTOS[getRandomInteger(0, PHOTOS.length - 1)],
+      photos: getRandomArray(PHOTOS),
       location,
     },
   };
